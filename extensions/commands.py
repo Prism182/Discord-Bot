@@ -94,7 +94,7 @@ async def help(ctx):
 
 issue = """
 To report an issue or change please go to the following link and apply the labels "Bug" or "Enhancement" approprietly,
-https://github.com/Prism182/Discord-Bot/issues
+https://github.com/Prism182/Discord-Bot/issues/new
 For major issues, (the bot crashes when you run a script, the bot does not communicate)Please use the Issue tracker and then ping @Prism182 for more help
 """
 
