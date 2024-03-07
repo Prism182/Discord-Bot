@@ -7,10 +7,12 @@ import asyncio
 plugin = lightbulb.Plugin("Commands")
 
 @plugin.command
-@lightbulb.command("ping", "says pong!")
+@lightbulb.command("ping", "says pong! and tells the user how fast the bot responded")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
-    await ctx.respond("Pong!")
+    await ctx.respond("Pong!", timer)
+
+timer = asyncio.sleep
 
 #@plugin.command
 #@lightbulb.command("group", "this is a group")
