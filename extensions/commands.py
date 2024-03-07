@@ -94,7 +94,7 @@ async def help(ctx):
 
 issue = """
 To report an issue or change please go to the following link and apply the labels "Bug" or "Enhancement" approprietly,
-https://github.com/1-1-1-1-1-1-1-1-1-1-1-1-1-1-1/DiscordBotServerStartup/issues
+https://github.com/Prism182/Discord-Bot/issues
 For major issues, (the bot crashes when you run a script, the bot does not communicate) please folow the above instructions and add the "highest priority" label to the bug
 Under no circumstances may you ping The author (@prism182) to get these bugs fixed
 """
