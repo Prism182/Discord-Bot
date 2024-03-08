@@ -100,6 +100,15 @@ https://github.com/Prism182/Discord-Bot/issues/new
 For major issues, (the bot crashes when you run a script, the bot does not communicate)Please use the Issue tracker and then ping @Prism182 for more help
 """
 
+@plugin.command
+@lightbulb.option("kb", "How large the zip bomb file is", type=int)
+@lightbulb.command("createzb", "This creates a zip bomb and sends it to you")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def zipb(ctx):
+    await ctx.respond(ctx.options.kb)
+    KB = ctx.options.num1
+    file = open("zipbomb.txt", "w")
+    file.close()
 
 def load(bot):
     bot.add_plugin(plugin)
