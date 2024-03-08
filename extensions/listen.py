@@ -28,8 +28,5 @@ async def message_edit_logger(event):
 async def on_error(event: lightbulb.CommandErrorEvent) -> None:
     ...
 
-
-
-
 def load(bot):
     bot.add_plugin(plugin)
