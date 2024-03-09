@@ -16,7 +16,7 @@ async def ping(ctx):
     await ctx.respond("Pong!")
     end_time = time.monotonic()
     response_time = round((end_time - start_time)* 1000, 2)
-    await ctx.edit_last_response(f"Pong! Response time:{response_time}")
+    await ctx.edit_last_response(f"Pong! Response time:{response_time}ms")
 
 #@plugin.command
 #@lightbulb.command("group", "this is a group")

@@ -120,8 +120,6 @@ async def on_dm_int(event):
     response = event.message.content
     return response
 
-
-
 @bot.command
 @lightbulb.option("scn", "this is a code that is updated on every use", type=str)
 @lightbulb.command("purge-logs", "this deletes all logs from the message logs folder")
