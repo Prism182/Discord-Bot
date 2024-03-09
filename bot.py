@@ -91,19 +91,14 @@ async def purge_messages(ctx):
     )
     await bot.rest.delete_messages(channel_id, messages)
 
-
 file_name = "purger"
 folder_path = "./purge"
 file_path = os.path.join(folder_path, file_name + ".txt")
 folder_to_archive = "./messagelogs"
 output_path = "./purger/archive.zip"
 
-
-
-
 @bot.command
 @lightbulb.option("scn", "this is a code that is updated on every use", type=str)
-@lightbulb.option("backup", "True/False", type=bool)
 @lightbulb.command("purge-logs", "this deletes all logs from the message logs folder")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def purge_logs(ctx):
@@ -115,15 +110,11 @@ async def purge_logs(ctx):
             current_datetime = datetime.datetime.now()
             time_string = current_datetime.strftime("%H:%M:%S")
             p.write(f'initiated the purge of message logs on {time_string} \n')
-        if ctx.options.backup == True:
-            print("reveived")
-            with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
-                for root, _, files in os.walk(folder_path):
-                    for file in files:
-                        abs_path = os.path.join(root, file)
-                        rel_path = os.path.relpath(abs_path, os.path.dirname(folder_path))
-                        zipf.write(abs_path, rel_path)
-        shutil.rmtree(folder_to_archive)
+        subprocess.run(
+            [
+                "python", "./purge_message_logs.py"
+            ]
+        )
     else:
         await ctx.respond(credentials)
 
