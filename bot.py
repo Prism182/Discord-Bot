@@ -150,6 +150,6 @@ credentials = """
 invalid credentials
 if you are sure you should have access to this command contact @prism182 for help
 if the above is not working for various reasons(prism182 is on holiday, not resopnding etc) please open an issue
-to do this use /repot-issue command and fill out the form"""
+to do this use /report-issue command and fill out the form"""
 
 bot.run()
