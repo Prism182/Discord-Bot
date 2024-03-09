@@ -2,9 +2,10 @@ import hikari
 import lightbulb
 import subprocess
 import os
-import shutil
+import asyncio
 import datetime
 import zipfile
+import random
 
 bot = lightbulb.BotApp(
     "MTE5NzY2MTYzNzE4MDY3NDA4OQ.G218Z0.JV_sizHI4YB4pxq4zNctIruMIfv58cE8bU7mKg",
@@ -22,7 +23,16 @@ bot.load_extensions_from("./extensions")
 @lightbulb.command("restartbot", "restarts the bot")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
-    await ctx.respond("Restarting")
+    await ctx.respond("[RESTART SEQUENCE INITIATED]")
+    await asyncio.sleep(0.1)
+    await ctx.edit_last_response("[DEPLOYING TASM CORRUPTION COUNTERMEASURES]")
+    await asyncio.sleep(0.1)
+    await ctx.edit_last_response("[RESTARTING][#---------]")
+    await ctx.edit_last_response("[RESTARTING][###-------]")
+    await ctx.edit_last_response("[RESTARTING][#####-----]")
+    await ctx.edit_last_response("[RESTARTING][########--]")
+    await ctx.edit_last_response("[RESTARTING][##########]")
+    await ctx.edit_last_response("[RESTARTED]")
     subprocess.run(
         [
         "python", "./Restartbot.py"
@@ -83,7 +93,8 @@ async def purge_messages(ctx):
         channel_id = 1198026541842567270
     else:
         pass
-    await ctx.respond("purging all messages in channel")
+    await ctx.respond("[PURGE SEQUENCE INITIATED]")
+    await ctx.edit_last_response("[DATA PURGE COMMENCING]")
     messages = (
         await bot.rest.fetch_messages(channel_id) # Limit the messages to the specific channel you want to delete from
         .take_until(lambda m: datetime.datetime.now(datetime.timezone.utc) == datetime.timedelta(ctx.options.days)) # Limit the messages to how many days from today you want to purge
@@ -96,14 +107,33 @@ folder_path = "./purge"
 file_path = os.path.join(folder_path, file_name + ".txt")
 folder_to_archive = "./messagelogs"
 output_path = "./purger/archive.zip"
+user = 741670077128245300
+dmcahnnel = 1216008569539924079
+
+@bot.listen(hikari.DMMessageCreateEvent)
+async def on_dm_int(event):
+    global response
+    if event.message.author.id != user:
+        channel_id = 1216008569539924079
+        channel = await event.app.rest.fetch_channel(channel_id)
+        await channel.send(f"someone has tried to bypass your authorisation, user Id:{event.message.author.id}, Username: {event.message.author.username}")
+    response = event.message.content
+    return response
+
+
 
 @bot.command
 @lightbulb.option("scn", "this is a code that is updated on every use", type=str)
 @lightbulb.command("purge-logs", "this deletes all logs from the message logs folder")
 @lightbulb.implements(lightbulb.SlashCommand)
-async def purge_logs(ctx):
-    await ctx.respond("identifying")
-    if ctx.options.scn == "1":
+async def purge_logs(ctx,):
+    await ctx.respond("[IDENTIFYING LIFEFORM]")
+    print("Message sent to administrator")
+    if ctx.options.scn != response:
+        await ctx.edit_last_response(f"[Invalid credentials][activativation sequence activated; Code: termination][requestion authorisation]")
+        await asyncio.sleep(1)
+        await ctx.edit_last_response(f"[authorisation authorisation failed][error code: 401] continuing to monitor specimens")
+    elif ctx.options.scn == response:
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
         with open(file_path, "a") as p:
@@ -115,8 +145,6 @@ async def purge_logs(ctx):
                 "python", "./purge_message_logs.py"
             ]
         )
-    else:
-        await ctx.respond(credentials)
 
 credentials = """
 invalid credentials
