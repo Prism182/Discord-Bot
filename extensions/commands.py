@@ -88,10 +88,6 @@ Commands:
 more commands are coming as nessisary 
 """
 
-#help commands to be implimented
-#"/group subcommand" - does nothing as of now, this is a place holder
-#"/add" - this adds 2 numbers together
-
 @plugin.command
 @lightbulb.command("report-issue", "sends a link to the issues tracker for the bot")
 @lightbulb.implements(lightbulb.SlashCommand)
