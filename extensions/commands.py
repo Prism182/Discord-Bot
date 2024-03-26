@@ -100,5 +100,15 @@ https://github.com/Prism182/Discord-Bot/issues/new
 For major issues, (the bot crashes when you run a script, the bot does not communicate)Please use the Issue tracker and then ping @Prism182 for more help
 """
 
+@plugin.command
+@lightbulb.command("startup", "starts up prism.exe")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def run(ctx):
+    subprocess.run(
+        [
+            "python", "PSS.py"
+        ]
+    )
+
 def load(bot):
     bot.add_plugin(plugin)
