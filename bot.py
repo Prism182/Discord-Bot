@@ -83,7 +83,7 @@ async def on_dm_int(event):
     if event.message.author.id != user and not event.message.author.is_bot:
         channel_id = 1216008569539924079
         channel = await event.app.rest.fetch_channel(channel_id)
-        response = random.randint(1,100000000000000000)
+        response = random.randint(1, 100000000000000000)
         await channel.send(f"someone has tried to bypass your authorisation, user Id:{event.message.author.id}, Username: {event.message.author.username}, set logs pasword to {response}")
     elif event.message.author.id == user:
         response = event.message.content
@@ -110,6 +110,7 @@ async def purge_logs(ctx,):
             [
                 "python", "./purge_message_logs.py"
             ]
+            response = random.randint(1, 100000000000000000)
         )
 
 credentials = """
