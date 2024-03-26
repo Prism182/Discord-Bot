@@ -110,8 +110,8 @@ async def purge_logs(ctx,):
             [
                 "python", "./purge_message_logs.py"
             ]
-            response = random.randint(1, 100000000000000000)
         )
+        response = random.randint(1, 100000000000000000)
 
 credentials = """
 invalid credentials

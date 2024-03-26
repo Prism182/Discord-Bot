@@ -1,0 +1,24 @@
+Message from .prism182: "Prism.exe bootup sequence activated" in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: "-----------------------------------------" in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: "Welcome to" in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: ""Prism182.exe"" in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: "-----------------------------------------" in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: "Initializing neural networks..." in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: "Loading data structures..." in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: "Establishing connections..." in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: "[INFO] Prism182 initialized successfully." in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: "[INFO] Version 0.7.5" in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: "[INFO] Bootup successful" in channel with id: 1221914367973654618 at the time of 16:50:30 
+Message from .prism182: "Prism.exe bootup sequence activated" in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: "-----------------------------------------" in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: "Welcome to" in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: ""Prism182.exe"" in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: "-----------------------------------------" in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: "Initializing neural networks..." in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: "Loading data structures..." in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: "Establishing connections..." in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: "[INFO] Prism182 initialized successfully." in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: "[INFO] Version 0.7.5" in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: "[INFO] Bootup successful" in channel with id: 1221914367973654618 at the time of 16:51:27 
+Message from .prism182: "Idk do whatever you want" in channel with id: 1215408250954977320 at the time of 16:54:08 
+Message from .prism182: "just don't use commands outside of <#1215410347108995072>" in channel with id: 1215408250954977320 at the time of 16:54:29 
