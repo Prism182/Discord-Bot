@@ -9,7 +9,7 @@ import random
 import json
 
 bot = lightbulb.BotApp(
-    "MTE5NzY2MTYzNzE4MDY3NDA4OQ.G218Z0.JV_sizHI4YB4pxq4zNctIruMIfv58cE8bU7mKg",
+    "",
 
     default_enabled_guilds=(1215407623378051132, 1214615652648747048),
 
