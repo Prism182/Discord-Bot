@@ -6,11 +6,12 @@ import asyncio
 import datetime
 import zipfile
 import random
+import json
 
 bot = lightbulb.BotApp(
     "MTE5NzY2MTYzNzE4MDY3NDA4OQ.G218Z0.JV_sizHI4YB4pxq4zNctIruMIfv58cE8bU7mKg",
 
-    default_enabled_guilds=(1197653145745104967, 1215407623378051132, 1214615652648747048),
+    default_enabled_guilds=(1215407623378051132, 1214615652648747048),
 
     intents=hikari.Intents.ALL_UNPRIVILEGED  # Add this
     | 
@@ -39,35 +40,103 @@ async def ping(ctx):
         ]
     )
 
-@bot.command
-@lightbulb.option("channel_name", "the channel id in which you want to purge", type=str)
-@lightbulb.option("days", "sets how many days worth of messages you want to delete 0 = today", type=int)
-@lightbulb.option("limit", "how many max messages to delete", type=int)
-@lightbulb.command("purge-messages", "purges all messages within the channel it is used")
-@lightbulb.implements(lightbulb.SlashCommand)
-async def purge_messages(ctx):
-    if ctx.options.channel_name == "tasm-test" or ctx.options.channel_name == "tasm-testing-grounds":
-        channel_id = 1215410347108995072
-    elif ctx.options.channel_name == "admin" or ctx.options.channel_name == "admin-bot-commands":
-        channel_id = 1197655039657902100
-    elif ctx.options.channel_name == "general":
-        channel_id = 1197653146219069611
-    elif ctx.options.channel_name == "bot-commands":
-        channel_id = 1197654649222729768
-    elif ctx.options.channel_name == "memes":
-        channel_id = 1198026016950595664
-    elif ctx.options.channel_name == "help":
-        channel_id = 1198026541842567270
-    else:
-        pass
-    await ctx.respond("[PURGE SEQUENCE INITIATED]")
-    await ctx.edit_last_response("[DATA PURGE COMMENCING]")
-    messages = (
-        await bot.rest.fetch_messages(channel_id) # Limit the messages to the specific channel you want to delete from
-        .take_until(lambda m: datetime.datetime.now(datetime.timezone.utc) == datetime.timedelta(ctx.options.days)) # Limit the messages to how many days from today you want to purge
-        .limit(ctx.options.limit) # Limit the messages to the amount you want deleted
-    )
-    await bot.rest.delete_messages(channel_id, messages)
+#@bot.command
+#@lightbulb.option("channel_name", "the channel id in which you want to purge", type=str)
+#@lightbulb.option("days", "sets how many days worth of messages you want to delete 0 = today", type=int)
+#@lightbulb.option("limit", "how many max messages to delete", type=int)
+#@lightbulb.command("purge-messages", "purges all messages within the channel it is used")
+#@lightbulb.implements(lightbulb.SlashCommand)
+#async def purge_messages(ctx):
+#    select_menu = (
+#        ctx.bot.rest.build_action_row()
+#        .add_select_menu("Channel_select")
+#        .set_placeholder("Pick a channel")
+#    )
+#    CHANNELS = json.load(open("channels.json"))
+#    for name,value in CHANNELS.items():
+#        select_menu.add_option(
+#            name,
+#            value,
+#        ).add_to_menu()
+#        resp = await ctx.respond(
+#            "pick a channel",
+#            component = select_menu.add_to_container(),   
+#        )
+#    msg = await resp.message()
+#    
+#    try:
+#        event = await ctx.bot.wait_for(
+#            hikari.InteractionCreateEvent,
+#            timeout = 15,
+#            predicate = lambda e:
+#                isinstance(e.iteraction, hikari.componentInteraction)
+#                and e.interaction.user.id == ctx.author.id
+#                and e.interaction.message.id == msg.id
+#                and e.interaction.component_type == hikari.ComponentType.SELECT_MENU
+#        )
+#    except asyncio.TimeoutError:
+#        await msg.edit("The menu timed out", compnents = [])
+#    else:
+#        CHANNELS = event.interaction.values[0]
+#        channel_id = CHANNELS
+#        await msg.edit("channel purged", components = [])
+
+#    if ctx.options.channel_name == "tasm-test" or ctx.options.channel_name == "tasm-testing-grounds":
+#        channel_id = 1215410347108995072
+#    else:
+#        pass
+#    await ctx.respond("[PURGE SEQUENCE INITIATED]")
+#    await ctx.edit_last_response("[DATA PURGE COMMENCING]")
+#    messages = (
+#        await bot.rest.fetch_messages(channel_id) # Limit the messages to the specific channel you want to delete from
+#        .take_until(lambda m: datetime.datetime.now(datetime.timezone.utc) == datetime.timedelta(ctx.options.days)) # Limit the messages to how many days from today you want to purge
+#        .limit(ctx.options.limit) # Limit the messages to the amount you want deleted
+#    )
+#    await bot.rest.delete_messages(channel_id, messages)
+
+#@bot.command
+#@lightbulb.command("purge-messages", "purges all messages within the channel selected")
+#@lightbulb.implements(lightbulb.SlashCommand)
+#async def purge_messages(ctx):
+#    select_menu = (
+#        ctx.bot.rest.build_action_row()
+#        .add_select_menu("channel_select")
+#        .set_placeholder("Pick a channel")
+#    )
+#    CHANNELS = json.load(open("channels.json"))
+#    for name,value in CHANNELS.items():
+#        select_menu.add_option(
+#            name,
+#            value,
+#        ).add_to_menu()
+#        resp = await ctx.respond(
+#            "Pick a channel",
+#            component = select_menu.add_to_container(),
+#        )
+#    msg = await resp.message()
+#    try:
+#        event = await ctx.bot.wait_for(
+#            hikari.InteractionCreateEvent,
+#            timeout=15,
+#            predicate = lambda e:
+#                isinstance(e.interaction, hikari.ComponentInteraction)
+#                and e.interaction.user.id == ctx.author.id
+#                and e.interaction.message.id == msg.id
+#                and e.interaction.component_type == hikari.ComponentType.TEXT_SELECT_MENU
+#        )
+#    except asyncio.TimeoutError:
+#        await msg.edit("The menu timed out", components = [])
+#    else:
+#        channels = event.interaction.values[0]
+#        channel_id = channels
+#        await ctx.edit_last_response("[PURGE SEQUENCE INITIATED]", components = [])
+#        await ctx.edit_last_response("[DATA PURGE COMMENCING]")
+#        messages = (
+#            await bot.rest.fetch_messages(channel_id) # Limit the messages to the specific channel you want to delete from
+#            .take_until(lambda m: datetime.datetime.now(datetime.timezone.utc) == datetime.timedelta(ctx.options.days)) # Limit the messages to how many days from today you want to purge
+#            .limit(ctx.options.limit) # Limit the messages to the amount you want deleted
+#        )
+#        await bot.rest.delete_messages(channel_id, messages)
 
 file_name = "purger"
 folder_path = "./purge"
